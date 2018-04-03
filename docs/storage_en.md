@@ -77,6 +77,18 @@ sudo easy_install -U vos
 </div>
 
 
+### Retrieving your CANFAR X509 certificates
+
+To access a VOSpace, the command line client needs a certificate. These certificates are created for you when you request an account, and you can get a short-lived proxy of this certificate to access your data with the `getcert` command line, distributed with the cadc-utils library that was automatically installed as part of the `vos` installation process above.
+
+<div class="shell">
+
+{% highlight bash %}
+getcert
+{% endhighlight %}
+
+</div>
+
 ### Using the client command line tools (recommended)
 
 Try the following commands, substituting your CANFAR VOSpace in for VOSPACE (most CANFAR users have VOSpace that is the same name as their CANFAR user name. There are also project VOSpaces):
@@ -279,29 +291,17 @@ mountvofs --help
 </div>
 
 
-### Retrieving your CANFAR X509 certificates
-
-To access a VOSpace, the command line client needs a certificate. These certificates are created for you when you request an account, and you can get a short-lived proxy of this certificate to access your data with the `getCert` command line, distributed with the cadc-utils library that was automatically installed as part of the `vos` installation process above.
-
-<div class="shell">
-
-{% highlight bash %}
-getCert
-{% endhighlight %}
-
-</div>
-
 ### Using on your batch processing VM
 
 In batch processing you might require that the cadcproxy certificate is available on your batch VM.  There are two approaches:
 
 #### Secure but slightly complicated
 
-- On the CANFAR batch submission host, batch.canfar.net, run the command getCert.
+- On the CANFAR batch submission host, batch.canfar.net, run the command getcert.
 
 <div class="shell">
  {% highlight bash %}
-getCert
+getcert
 {% endhighlight %}
 </div>
 
@@ -332,7 +332,7 @@ mv cadcproxy.pem ${HOME}/.ssl/
 
 #### Insecure but slight less complicated
 
-Use the getCert at the start of every job.  To avoid getCert from
+Use the getcert at the start of every job.  To avoid getcert from
 asking for your CANFAR username/password, add a `$HOME/.netrc` file containing these lines:
 
 <div class="shell">
